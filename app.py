@@ -10,29 +10,29 @@ from langchain.chains.question_answering import load_qa_chain
 import platform
 
 # App title and presentation
-st.title('Generación Aumentada por Recuperación (RAG) 💬')
-st.write("Versión de Python:", platform.python_version())
+st.title('Generación Mejorada por Recuperación 💬')
+st.write("Release de Python:", platform.python_version())
 
 # Load and display image
 try:
-    image = Image.open('Chat_pdf.png')
+    image = Image.open('Oriana.jpg')
     st.image(image, width=350)
 except Exception as e:
-    st.warning(f"No se pudo cargar la imagen: {e}")
+    st.warning(f"Error al cargar la imagen: {e}")
 
 # Sidebar information
 with st.sidebar:
-    st.subheader("Este Agente te ayudará a realizar análisis sobre el PDF cargado")
+    st.subheader("Este asistente le ayudará a analizar el documento PDF que ha subido")
 
 # Get API key from user
-ke = st.text_input('Ingresa tu Clave de OpenAI', type="password")
+ke = st.text_input('Introduzca su API Key de OpenAI', type="password")
 if ke:
     os.environ['OPENAI_API_KEY'] = ke
 else:
-    st.warning("Por favor ingresa tu clave de API de OpenAI para continuar")
+    st.warning("Por favor ingresa su API Key de OpenAI para continuar")
 
 # PDF uploader
-pdf = st.file_uploader("Carga el archivo PDF", type="pdf")
+pdf = st.file_uploader("Suba su documento PDF", type="pdf")
 
 # Process the PDF if uploaded
 if pdf is not None and ke:
